@@ -16,14 +16,6 @@ const rowStyle = {
   borderBottomWidth: 0.5,
 };
 
-const contentStyle = {
-  flex: 1,
-  flexDirection: "row",
-  justifyContent: "space-around",
-  alignItems: "center",
-  padding: 15,
-};
-
 const MarketScreen = () => {
   const [data, setData] = useState([]);
 
@@ -49,6 +41,31 @@ const MarketScreen = () => {
 
   return (
     <View>
+      <View
+        style={{
+          backgroundColor: "white",
+          paddingHorizontal: 15,
+          paddingVertical: 10,
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
+        <Text
+          style={{
+            fontWeight: "bold",
+          }}
+        >
+          Sort By
+        </Text>
+        <View
+          style={{
+            flexDirection: "row",
+          }}
+        >
+          <Text>Default</Text>
+          <Ionicons name={`caret-down-outline`} size={18} color="black" />
+        </View>
+      </View>
       <ScrollView style={{ height: "100%" }}>
         {data.map((d, i) => {
           const latest =
@@ -56,15 +73,17 @@ const MarketScreen = () => {
             {};
           const day = parseFloat(latest.day) || 0;
           const dayMinus = day < 0;
-          const week = parseFloat(latest.week) || 0;
-          const weekMinus = week < 0;
-          const month = parseFloat(latest.month) || 0;
-          const monthMinus = month < 0;
-          const year = parseFloat(latest.year) || 0;
-          const yearMinus = year < 0;
           return (
             <View key={i} style={rowStyle}>
-              <View style={contentStyle}>
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: "row",
+                  justifyContent: "space-around",
+                  alignItems: "center",
+                  padding: 15,
+                }}
+              >
                 <View>
                   <SvgUri width={30} height={30} uri={d.logo} />
                 </View>
