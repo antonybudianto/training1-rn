@@ -11,7 +11,7 @@ const locale = Intl.NumberFormat("id");
 
 const rowStyle = {
   backgroundColor: "white",
-  height: 60,
+  height: 68,
   borderBottomColor: "lightgray",
   borderBottomWidth: 0.5,
 };
@@ -86,24 +86,30 @@ const MarketScreen = () => {
                     Rp{locale.format(latest.latestPrice || 0)}
                   </Text>
 
-                  <Text
+                  <View
                     style={{
-                      width: 80,
-                      fontWeight: "bold",
-                      backgroundColor: "pink",
-                      color: dayMinus ? "red" : "green",
-                      // flex: 1,
-                      // alignItems: "center",
+                      flex: 1,
+                      flexDirection: "row",
+                      marginTop: 2,
                     }}
                   >
                     <Ionicons
                       name={`caret-${dayMinus ? "down" : "up"}-outline`}
-                      size={24}
+                      size={18}
                       color={dayMinus ? "red" : "green"}
                     />
-                    {dayMinus ? "-" : "+"}
-                    {Math.abs(day)}%
-                  </Text>
+                    <Text
+                      style={{
+                        fontWeight: "bold",
+                        // backgroundColor: "pink",
+                        color: dayMinus ? "red" : "green",
+                        textAlign: "right",
+                      }}
+                    >
+                      {dayMinus ? "-" : "+"}
+                      {Math.abs(day)}%
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
