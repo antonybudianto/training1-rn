@@ -1,10 +1,10 @@
-import { useCallback, useEffect, useState } from "react";
-import { Image, ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import { SvgUri } from "react-native-svg";
 
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 import usePriceChanges from "../hooks/usePriceChanges";
+import useCurrencies from "../hooks/useCurrencies";
 
 const pairMainCurrency = "idr";
 const locale = Intl.NumberFormat("id");
@@ -17,30 +17,15 @@ const rowStyle = {
 };
 
 const MarketScreen = () => {
-  const [data, setData] = useState([]);
-
-  const fetchCurrencies = useCallback(() => {
-    fetch("https://api.pintu.co.id/v2/wallet/supportedCurrencies")
-      .then((res) => {
-        if (!res.ok) {
-          throw res;
-        }
-        return res.json();
-      })
-      .then((json) => {
-        // console.log(json);
-        setData(json.payload.slice(1));
-      });
-  }, []);
-
-  useEffect(() => {
-    fetchCurrencies();
-  }, []);
-
+  const currencies = useCurrencies();
   const { hashmap } = usePriceChanges();
 
   return (
-    <View>
+    <View
+      style={{
+        marginBottom: 38,
+      }}
+    >
       <View
         style={{
           backgroundColor: "white",
@@ -67,7 +52,7 @@ const MarketScreen = () => {
         </View>
       </View>
       <ScrollView style={{ height: "100%" }}>
-        {data.map((d, i) => {
+        {currencies.map((d, i) => {
           const latest =
             hashmap[`${d.currencySymbol.toLowerCase()}/${pairMainCurrency}`] ||
             {};
