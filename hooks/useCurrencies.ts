@@ -1,9 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
+import { API_DOMAIN } from "../constants/api";
+
+const CURRENCIES_API = `https://${API_DOMAIN}/v2/wallet/supportedCurrencies`;
 
 const useCurrencies = () => {
   const [currencies, setCurrencies] = useState([]);
   const fetchCurrencies = useCallback(() => {
-    fetch("https://api.pintu.co.id/v2/wallet/supportedCurrencies")
+    fetch(CURRENCIES_API)
       .then((res) => {
         if (!res.ok) {
           throw res;

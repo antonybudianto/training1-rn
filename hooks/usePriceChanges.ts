@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
+import { API_DOMAIN } from "../constants/api";
 
-const PRICE_CHANGE_API = "https://api.pintu.co.id/v2/trade/price-changes";
+const PRICE_CHANGE_API = `https://${API_DOMAIN}/v2/trade/price-changes`;
 
 const usePriceChanges = () => {
   const [hashmap, setHashmap] = useState({});
