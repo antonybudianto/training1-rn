@@ -2,6 +2,7 @@ import { ScrollView, Text, View } from "react-native";
 import { SvgUri } from "react-native-svg";
 
 import Ionicons from "@expo/vector-icons/Ionicons";
+import AntIcon from "@expo/vector-icons/AntDesign";
 
 import usePriceChanges from "../hooks/usePriceChanges";
 import useCurrencies from "../hooks/useCurrencies";
@@ -23,7 +24,7 @@ const MarketScreen = () => {
   return (
     <View
       style={{
-        marginBottom: 38,
+        marginBottom: 73,
       }}
     >
       <View
@@ -31,24 +32,58 @@ const MarketScreen = () => {
           backgroundColor: "white",
           paddingHorizontal: 15,
           paddingVertical: 10,
-          flexDirection: "row",
-          justifyContent: "space-between",
         }}
       >
-        <Text
-          style={{
-            fontWeight: "bold",
-          }}
-        >
-          Sort By
-        </Text>
         <View
           style={{
             flexDirection: "row",
+            justifyContent: "space-between",
           }}
         >
-          <Text>Default</Text>
-          <Ionicons name={`caret-down-outline`} size={18} color="black" />
+          <Text
+            style={{
+              fontSize: 25,
+              fontWeight: "bold",
+            }}
+          >
+            Market
+          </Text>
+          <View
+            style={{
+              flexDirection: "row",
+            }}
+          >
+            <AntIcon
+              name="staro"
+              size={25}
+              color="black"
+              style={{ marginRight: 10 }}
+            />
+            <AntIcon name="search1" size={25} color="black" />
+          </View>
+        </View>
+        <View
+          style={{
+            marginTop: 8,
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
+          <Text
+            style={{
+              fontWeight: "bold",
+            }}
+          >
+            Sort By
+          </Text>
+          <View
+            style={{
+              flexDirection: "row",
+            }}
+          >
+            <Text>Default</Text>
+            <Ionicons name={`caret-down-outline`} size={18} color="black" />
+          </View>
         </View>
       </View>
       <ScrollView style={{ height: "100%" }}>
